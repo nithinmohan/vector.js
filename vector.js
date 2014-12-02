@@ -32,3 +32,18 @@ Vector.prototype.getAngleInRadient=function(){
 Vector.prototype.getAngleInDegree=function(){
 	return Math.atan2(this.x,this.y)*(180/Math.PI);
 }
+Vector.prototype.getDistance=function(vector){
+	return this.magnitude(this.sub(vector));
+}
+Vector.prototype.getAngleTo=function(vector){
+	return this.getAngleInRadient(this.sub(vector));
+}
+Vector.prototype.normalize=function(){
+	var mag=this.magnitude();
+	this.x/=mag;
+	this.y/=mag;
+	return this;
+}
+Vector.fromAngle = function (angle, magnitude) {
+ 	return new Vector(magnitude * Math.cos(angle), magnitude * Math.sin(angle));
+}
